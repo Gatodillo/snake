@@ -87,14 +87,15 @@ class Snake(pygame.sprite.RenderPlain):
 
             # Kill snake if it is out of screen
             head: SnakeUnit = self.sprites().pop()
-            if (
-                head.rect.x < 0
-                or head.rect.x > Screen.WIDTH - head.rect.w
-                or head.rect.y < 0
-                or head.rect.y > Screen.HEIGHT - head.rect.h
-            ):
-                self.dead = True
-
+            if head.rect.x < 0:
+                self.dead = False
+                head.rect.x =  Screen.WIDTH - head.rect.w
+            elif head.rect.x > Screen.WIDTH - head.rect.w:
+                head.rect.x = 0
+            elif head.rect.y < 0:
+                head.rect.y = Screen.HEIGHT
+            elif head.rect.y > Screen.HEIGHT:
+                head.rect.y = 0
             # Kill snake if it collides with itself
             if not self.dead:
                 sprites: List[SnakeUnit] = self.sprites()

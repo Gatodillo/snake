@@ -54,7 +54,7 @@ def main():
     pygame.display.init()
     pygame.font.init()
     pygame.display.set_caption("Snake with pygame")
-    pygame.display.set_mode((Screen.WIDTH, Screen.HEIGHT))
+    pygame.display.set_mode((Screen.WIDTH, Screen.HEIGHT), pygame.FULLSCREEN)
 
     while True:
         game()
